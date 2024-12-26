@@ -25,14 +25,11 @@ df_stocks = spark.read.csv("s3://data-engineer-assignment-saarlevy/stocks_data/"
 # from (select date, ticker, close , lag(close) over(partition by ticker order by date) as prev_close
 # from stocks_data)
 # )
-# SELECT
+# select
 # ticker,
 #     -- this calculation was taken from the web, I didn't knew what annual stddev is, the assumption is there are 252 trading days per year
 #     sqrt(252) * stddev(daily_return) AS annualized_stddev
-# FROM
-#     daily_returns
-# WHERE
-#     daily_return IS NOT NULL
+# from  daily_returns
 # group by ticker
 # order by annualized_stddev desc
 # limit 1""")
